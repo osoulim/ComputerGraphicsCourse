@@ -1,6 +1,5 @@
 var scene = new THREE.Scene();
-var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 30;
+var camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 10000);
 
 var renderer = new THREE.WebGLRenderer({
     antialias: true
@@ -17,7 +16,7 @@ window.addEventListener('resize', () => {
 })
 
 var light = new THREE.PointLight(0xFFFFFF, 1, 5000);
-light.position.set(0, 0, 25);
+light.position.set(0, 0, 0);
 scene.add(light);
 
 // var texture = new THREE.TextureLoader().load('textures/earth.jpg')
@@ -48,9 +47,23 @@ loader.load(
     }
 );
 
+var clock = new THREE.Clock();
+var controls = new THREE.FlyControls(camera, renderer.domElement);
+controls.movementSpeed = 100;
+controls.domElement = renderer.domElement;
+controls.rollSpeed = Math.PI / 24;
+controls.autoForward = false;
+controls.dragToLook = true;
+
+
 function animate() {
+    var delta = clock.getDelta();
     requestAnimationFrame(animate);
-    car.rotation.y += 0.01;
+    // car.rotation.y += 0.01;
+    controls.update(delta);
     renderer.render(scene, camera);
+    light.position.x = camera.position.x;
+    light.position.y = camera.position.y;
+    light.position.z = camera.position.z;
 }
 animate();
