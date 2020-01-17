@@ -16,11 +16,11 @@ window.addEventListener('resize', () => {
 })
 
 var light = new THREE.PointLight(0xFFFFFF, 1, 5000);
-light.position.set(0, 0, 0);
+light.position.set(500, 0, 0);
 scene.add(light);
 
 // var texture = new THREE.TextureLoader().load('textures/earth.jpg')
-// var geometry = new THREE.SphereGeometry(2, 25, 25)
+// var geometry = new THREE.SphereGeometry(50, 50, 50)
 // var material = new THREE.MeshLambertMaterial({
 //     map: texture,
 //     overdraw: 0.5
@@ -59,7 +59,7 @@ controls.dragToLook = true;
 function animate() {
     var delta = clock.getDelta();
     requestAnimationFrame(animate);
-    // car.rotation.y += 0.01;
+    // mesh.rotation.y += 0.01;
     controls.update(delta);
     renderer.render(scene, camera);
     light.position.x = camera.position.x;
