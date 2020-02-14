@@ -127,7 +127,7 @@ const setupScene = () => {
   pointLight.position.set(500, 500, 500)
   scene.add(pointLight)
 
-  loadOBJModel('models/car.obj').then(objectToExplode => {
+  loadOBJModel('models/wheel.obj').then(objectToExplode => {
     generateTrisFromChildren(scene, objectToExplode, new THREE.Vector3(0, 0, 0))
   })
 
@@ -140,8 +140,8 @@ let timeSinceStart = 0
 function animate() {
   requestAnimationFrame(animate)
 
-  if (timeSinceStart > 200) timeSinceStart = 0
-  timeSinceStart += 1
+  if (timeSinceStart > 400) timeSinceStart = 0
+  timeSinceStart += 10
 
   objectToExplodeTris.forEach(tri => {
     const { initialPosition, movementDir } = tri
