@@ -44,7 +44,6 @@ class Obj:
         return list(map(lambda x: np.array(list(map(lambda y: self.vertices[y], x))), self.faces))
         
 
-
 if __name__ == "__main__":
     pass
     pygame.init()

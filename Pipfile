@@ -13,6 +13,8 @@ numpy = "*"
 pyglut = "*"
 pyopengl-accelerate = "*"
 opencv-python = "*"
+dlib = "*"
+imutils = "*"
 
 [requires]
 python_version = "3.6"
