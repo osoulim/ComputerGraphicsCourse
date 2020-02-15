@@ -34,10 +34,11 @@ glLightfv(GL_LIGHT0, GL_POSITION, (0, 20, 0, 1))
 # glMaterialfv(GL_FRONT, GL_AMBIENT, (0, 0.8, 0.8, 1))
 glShadeModel(GL_FLAT)
 
+glEnable(GL_DEPTH_TEST)
 
 
 steps = 20
-distance_range = range(10, 16, 2)
+distance_range = range(20, 22, 2)
 
 
 for distance in distance_range:

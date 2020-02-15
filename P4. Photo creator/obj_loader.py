@@ -35,12 +35,12 @@ class Obj:
                     self.face_normals.append(face_normal)
 
     def draw(self):
-        glBegin(GL_TRIANGLES)
         for normals, face in zip(self.face_normals, self.faces):
+            glBegin(GL_TRIANGLES if len(face) == 3 else GL_QUADS)
             glNormal3fv( sum(map(lambda x: self.normals[x], normals)) / len(normals) )
             for vertex_id in face:
                 glVertex3fv(self.vertices[vertex_id] + self.position)
-        glEnd()
+            glEnd()
 
     def export_faces(self):
         return list(map(lambda x: np.array(list(map(lambda y: self.vertices[y], x))), self.faces))
