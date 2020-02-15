@@ -87,13 +87,14 @@ while cv2.waitKey(30) != ord('q'):
     # glEnd()
 
     for index in obj.left_eye:
-        obj.vertices[index] += (obj.vertices[index] - obj.left_eye_center) * (left_eye_dis - 0.055)
+        obj.vertices[index] += (obj.vertices[index] - obj.left_eye_center) * (left_eye_dis - 0.05)
     
     for index in obj.right_eye:
-        obj.vertices[index] += (obj.vertices[index] - obj.right_eye_center) * (right_eye_dis - 0.055) 
+        obj.vertices[index] += (obj.vertices[index] - obj.right_eye_center) * (right_eye_dis - 0.05) 
     
     for index in obj.mouth:
-        obj.vertices[index] -= (obj.vertices[index] - obj.mouth_center) * (mouth_dis - 0.5)
+        obj.vertices[index] += (obj.vertices[index] - obj.mouth_center) * (mouth_dis - 0.08)
+    print(mouth_dis)
 
     obj.draw()
 

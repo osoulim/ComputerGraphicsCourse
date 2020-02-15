@@ -40,7 +40,7 @@ class Obj:
                                 self.right_eye.append(index)
                     if state == "mouth":
                         for index, vertex in enumerate(self.vertices):
-                            if (vertex - vert).all() <= 1e-7:
+                            if (vertex - vert == 0).all():
                                 self.mouth.append(index)
 
                 elif instruction[0] == "vn":
