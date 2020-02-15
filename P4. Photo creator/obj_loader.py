@@ -6,13 +6,12 @@ from OpenGL.GLU import *
 
 import numpy as np 
 
-def point_sum(p1, p2):
-    return (p1[0] + p2[0], p1[1] + p2[1], p1[2] + p2[2])
 
 class Obj:
     def __init__(self, file_name):
         self.vertices = [ ]
         self.faces = []
+        self.face_normals = []
         self.normals = []
         self.position = np.array([0, 0, 0])
 
@@ -31,11 +30,14 @@ class Obj:
                 
                 elif instruction[0] == "f":
                     face = tuple(map(lambda x: int(x.split("/")[0]) - 1, instruction[1:]) )
+                    face_normal = tuple(map(lambda x: int(x.split("/")[-1]) - 1, instruction[1:]) )
                     self.faces.append(face)
+                    self.face_normals.append(face_normal)
 
     def draw(self):
         glBegin(GL_TRIANGLES)
-        for face in self.faces:
+        for normals, face in zip(self.face_normals, self.faces):
+            glNormal3fv( sum(map(lambda x: self.normals[x], normals)) / len(normals) )
             for vertex_id in face:
                 glVertex3fv(self.vertices[vertex_id] + self.position)
         glEnd()
