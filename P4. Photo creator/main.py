@@ -1,8 +1,3 @@
-# Basic OBJ file viewer. needs objloader from:
-#  http://www.pygame.org/wiki/OBJFileLoader
-# LMB + move: rotate
-# RMB + move: pan
-# Scroll wheel: zoom in/out
 import sys, pygame
 import numpy as np
 from pygame.locals import *
@@ -38,7 +33,7 @@ glEnable(GL_DEPTH_TEST)
 
 
 steps = 20
-distance_range = range(20, 22, 2)
+distance_range = range(20, 30, 5)
 
 
 for distance in distance_range:
