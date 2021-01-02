@@ -1,8 +1,3 @@
-# Basic OBJ file viewer. needs objloader from:
-#  http://www.pygame.org/wiki/OBJFileLoader
-# LMB + move: rotate
-# RMB + move: pan
-# Scroll wheel: zoom in/out
 import sys, pygame
 import numpy as np
 from pygame.locals import *
@@ -19,7 +14,6 @@ def draw_exploded_face(face, dis):
     glEnd()
 
 
-
 pygame.init()
 viewport = (1280,720)
 pygame.display.set_mode(viewport, OPENGL | DOUBLEBUF)
@@ -28,8 +22,7 @@ gluPerspective(75, (viewport[0]/viewport[1]), 0.1, 500.0)
 
 obj = Obj("models/porshe.obj")
 faces = obj.export_faces()
-print(len(faces))
-bomb_pos = np.array([5, 0, 0])
+bomb_pos = np.array([0, 0, 0])
 speed = 0.5
 camera_position = np.array([0, 0, -30])
 camera_up = np.array([0, 1, 0])
